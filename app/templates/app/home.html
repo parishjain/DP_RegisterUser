@@ -1,0 +1,28 @@
+{% load static %}
+<html>
+       
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <div class="container">  
+        <form id="contact" action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+        <h3>Contact Form</h3>
+        <h4>Contact us for help</h4>
+        <center> <h1 style="color:red">{{msg}}</h1> <center>
+        <fieldset>
+            <input  placeholder="Your name" value={{request.session.Firstname}}>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Your Email Address" value={{request.session.Emailid}}>
+        </fieldset>
+        <fieldset>
+            <input name = "contact" placeholder="Your Phone Number (optional)" value={{request.session.contact}}>
+        </fieldset>
+        <fieldset>
+            <textarea name="message" placeholder="Type your message here...." tabindex="5" required></textarea>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+        </fieldset>
+        </form>
+    </div>
+</html>
